@@ -188,7 +188,8 @@ class GoogleSignIn {
     return GoogleSignIn(
         signInOption: SignInOption.standard,
         scopes: scopes,
-        hostedDomain: hostedDomain);
+        hostedDomain: hostedDomain,
+        clientId: clientId);
   }
 
   /// Factory for creating sign in suitable for games. This option is only
