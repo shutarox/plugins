@@ -29,7 +29,10 @@ dependencies:
   # validation, so we set a ^ constraint.
   # TODO(amirh): Revisit this (either update this part in the  design or the pub tool).
   # https://github.com/flutter/flutter/issues/46264
-  google_sign_in_web: ^0.9.1
+  google_sign_in_web:
+    git:
+      url: git@github.com:shutarox/plugins.git
+      path: packages/google_sign_in/google_sign_in_web/
 
 dev_dependencies:
   http: ^0.12.0
