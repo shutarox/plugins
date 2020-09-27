@@ -10,6 +10,7 @@
 
 * Update package:e2e reference to use the local version in the flutter/plugins
   repository.
+* Fix the getToken method used in serverAuthCode on iOS.
 
 ## 4.5.1
 
