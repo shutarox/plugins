@@ -184,6 +184,7 @@ class GoogleSignIn {
   factory GoogleSignIn.standard({
     List<String> scopes = const <String>[],
     String hostedDomain,
+    String clientId,
   }) {
     return GoogleSignIn(
         signInOption: SignInOption.standard,
