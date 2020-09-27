@@ -78,7 +78,8 @@ static FlutterError *getFlutterError(NSError *error) {
       if (path) {
         NSMutableDictionary *plist = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
         [GIDSignIn sharedInstance].clientID = plist[kClientIdKey];
-        [GIDSignIn sharedInstance].serverClientID = plist[kServerClientIdKey];
+//        [GIDSignIn sharedInstance].serverClientID = plist[kServerClientIdKey];
+        [GIDSignIn sharedInstance].serverClientID = call.arguments[@"clientId"];
         [GIDSignIn sharedInstance].scopes = call.arguments[@"scopes"];
         [GIDSignIn sharedInstance].hostedDomain = call.arguments[@"hostedDomain"];
         result(nil);
@@ -109,7 +110,7 @@ static FlutterError *getFlutterError(NSError *error) {
     GIDGoogleUser *currentUser = [GIDSignIn sharedInstance].currentUser;
     GIDAuthentication *auth = currentUser.authentication;
     [auth getTokensWithHandler:^void(GIDAuthentication *authentication, NSError *error) {
-      NSLog(@"currentUser %@ %@ %@ %@", currentUser.serverClientID, currentUser.serverAuthCode, currentUser.userID, currentUser.authentication);
+      NSLog(@"currentUser %@ %@ %@ %@", currentUser.userID, currentUser.serverAuthCode, currentUser.authentication, currentUser.profile);
       result(error != nil ? getFlutterError(error) : @{
         @"idToken" : authentication.idToken,
         @"accessToken" : authentication.accessToken,
