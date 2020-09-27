@@ -109,6 +109,7 @@ static FlutterError *getFlutterError(NSError *error) {
     GIDGoogleUser *currentUser = [GIDSignIn sharedInstance].currentUser;
     GIDAuthentication *auth = currentUser.authentication;
     [auth getTokensWithHandler:^void(GIDAuthentication *authentication, NSError *error) {
+      NSLog(@"currentUser %@ %@ %@ %@", currentUser.serverClientID, currentUser.serverAuthCode, currentUser.userID, currentUser.authentication);
       result(error != nil ? getFlutterError(error) : @{
         @"idToken" : authentication.idToken,
         @"accessToken" : authentication.accessToken,
