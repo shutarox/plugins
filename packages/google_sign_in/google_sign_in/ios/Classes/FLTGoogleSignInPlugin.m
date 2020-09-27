@@ -79,6 +79,8 @@ static FlutterError *getFlutterError(NSError *error) {
         NSMutableDictionary *plist = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
         [GIDSignIn sharedInstance].clientID = plist[kClientIdKey];
 //        [GIDSignIn sharedInstance].serverClientID = plist[kServerClientIdKey];
+        NSLog(@"### serverClientID1: %@", call.arguments[@"clientId"]);
+        NSLog(@"### serverClientID2: %@", plist[kClientIdKey]);
         [GIDSignIn sharedInstance].serverClientID = call.arguments[@"clientId"];
         [GIDSignIn sharedInstance].scopes = call.arguments[@"scopes"];
         [GIDSignIn sharedInstance].hostedDomain = call.arguments[@"hostedDomain"];
